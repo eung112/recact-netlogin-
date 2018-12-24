@@ -21,7 +21,7 @@ class Appheader extends Component {
                             <a className="nav-link" href="#">About</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Help</a>
+                         <a className="nav-link" href="#">Help</a>
                         </li>
                     </ul>
                 </div>
