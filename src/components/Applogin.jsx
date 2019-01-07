@@ -28,50 +28,33 @@ class Applogin extends Component {
      event.preventDefault();
          let usersname =this.state.users_name;
          let password = this.state.users_password;
-
-         if  (usersname != '' && this.password !=''){
+      
+         if  (usersname !== '' && this.password !==''){
+        
             $('.alert').hide();
             let result = await axios.post('http://localhost/netlogapi/users.php',{
-                ApiKey: 'NetLogApi',
+                Apikey: 'NetLogApi',
                 fn: 'Login',
                 users_name:usersname,
                 users_password:password
         });                
-         
+          if (result.data !== false) {
+              let user = result.data;
+              delete user.users_password;
+              sessionStorage.setItem('loginuser', JSON.stringify(this.users));
+              if (user.users_status ==='admin'){
+                window.location.replace('/admin');
+              }
+              else if (user.users_status ==='user'){
+                window.location.replace('/user');
+              }
+            }
 
-
-             //   (this.users = await this.usersService.login(this.username,this.password);
-              //console.log(this.users);
-               
-              //if(this.users != false){
-          
-               // sessionStorage.setItem('loginuser',JSON.stringify(this.users));
-                //if(this.users.users_status == 'admin')
-                //this.router.navigate(['/admin']);
-              //  else  if(this.users.users_status == 'user')
-               // this.router.navigate(['/user']);
-               
-               //else{
-                  //  this.error_txt = 'Invalid Username or Password';
-                  //  $('.alert').show('');
-                //  }   
-               // $('.alert').show('');
-             // }
-              //else {
-                //this.setState({ errror_txt}) = 'Please enter Username or Password';
-                //$('.alert').show('');
-              //} 
-          
-             }
-             else {
+             }else {
                this.setState({ errror_txt: 'Please enter Username and Password'});
                 $('.alert').show('');
-              }
-                
-        
+              }              
     }
-
-
 
 render () {
 
