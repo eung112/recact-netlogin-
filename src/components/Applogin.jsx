@@ -41,7 +41,7 @@ class Applogin extends Component {
           if (result.data !== false) {
               let user = result.data;
               delete user.users_password;
-              sessionStorage.setItem('loginuser', JSON.stringify(this.users));
+              sessionStorage.setItem('loginuser', JSON.stringify(user));
               if (user.users_status ==='admin'){
                 window.location.replace('/admin');
               }
