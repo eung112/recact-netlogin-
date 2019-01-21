@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Adminheader from './components/Adminheader';
 import Welcomeuser from './components/Welcomeuser';
-import { Switch ,Route} from 'react-router-dom';
 import Manageuser from'./components/Manageuser';
-
+import Editusers from'./components/Editusers';
+import { Switch ,Route} from 'react-router-dom';
 class NetlogAdmin extends Component {
+
     state = {  }
 
 
@@ -23,7 +24,9 @@ class NetlogAdmin extends Component {
                 <Switch>
                     <Route exact path ="/admin" component={Welcomeuser}/>
                     <Route path ="/admin/users" component={Manageuser}/>
+                    <Route path ="/admin/editusers/:users_name" component={Editusers}/>
                 </Switch>
+
             </div>
         );
     }
