@@ -3,6 +3,7 @@ import Adminheader from './components/Adminheader';
 import Welcomeuser from './components/Welcomeuser';
 import Manageuser from'./components/Manageuser';
 import Editusers from'./components/Editusers';
+import Deleteusers from'./components/Deleteusers';
 import { Switch ,Route} from 'react-router-dom';
 class NetlogAdmin extends Component {
 
@@ -25,11 +26,12 @@ class NetlogAdmin extends Component {
                     <Route exact path ="/admin" component={Welcomeuser}/>
                     <Route path ="/admin/users" component={Manageuser}/>
                     <Route path ="/admin/editusers/:users_name" component={Editusers}/>
+                    <Route path ="/admin/delusers/:users_name" component={Deleteusers}/>
                 </Switch>
 
             </div>
         );
     }
 }
- 
+
 export default NetlogAdmin;
